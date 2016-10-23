@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>chapter01</title>
+</head>
+<body>
+
+	<script>
+		window.onload=function() {
+			var stringVariable="string";
+			console.log(typeof(stringVariable));
+			var undefinedVariable=undefined;
+			console.log(typeof(undefinedVariable));
+			console.log(undefinedVariable==undefined);
+			var nullVariable=null;
+			console.log(typeof(nullVariable));
+			console.log(nullVariable==null);
+			var booleanVariable=true;
+			console.log(typeof(booleanVariable));
+			var numberVaribale=55;
+			console.log(typeof(numberVaribale));
+			var number1=3.125e7;
+			console.log(number1);
+			var number2=0.000000000003;
+			console.log(number2);
+			var number3=Number.MAX_VALUE+Number.MAX_VALUE;
+			console.log(number3);//Infinity
+			console.log(isNaN("blue"));
+			var number4=Number("hello");
+			console.log(number4);
+			var number5=parseInt("10",2);
+			console.log(number5);
+			var number6=parseInt("10",8);
+			console.log(number6);
+			var number7=parseInt("10",10);
+			console.log(number7);
+			var number8=parseInt("10",16);//十六进制0-9A-F
+			console.log(number8);
+			var age=11;
+			console.log(age.toString());
+			var o =new Object();
+			console.log(o);
+			console.log(NaN==NaN);
+			console.log(null==undefined);
+			var num1=1,num2=2,num3=3;//一条语句执行多个操作
+			var num4=(5,1,67,0);//取最后一个
+			console.log(num4);
+			// for(;;){
+			// 	console.log(1);//无限循环
+			// }
+			// for(var propName in window){//枚举对象属性 for in
+			// 	console.log(propName);
+			// }
+			var num5=0;
+			outermost:
+			for(var i=0;i<10;i++){
+				for(var j=0;j<10;j++){
+					if(i==5 && j ==5){
+						break outermost;//不仅推出了当前循环也推出了外部循环
+					}
+					num5++;
+				}
+			}
+			console.log(num5);
+
+			var num6=0;
+			outermost:
+			for(var i=0;i<10;i++){
+				for(var j=0;j<10;j++){
+					if(i==5 && j ==5){
+						continue outermost;//仅推出了当前循环 不推出外部循环
+					}
+					num6++;
+				}
+			}
+			console.log(num6);
+
+			var num7=25;
+			switch(true){
+				case num7<0:
+				console,log("<0");
+				break;
+				case num7>10:
+				console.log(">10");
+				break;
+				default:
+				console.lgo("default");
+			}
+			function sum() {
+				console.log(arguments.length);//获取传递了几个参数
+				console.log(arguments[0]);//argument的值永远和参数保持一致 内存是独立的值会同步
+				console.log(arguments[1]);
+				console.log(arguments[2]);
+				return 10;//return将不会往下执行
+			}
+			var sum=sum(1,2);
+			console.log(sum);
+
+		}
+	</script>
+</body>
+</html>
