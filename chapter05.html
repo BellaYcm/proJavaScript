@@ -140,20 +140,104 @@
 		console.log(time.getHours());
 
 
-		//RegExp
+		//RegExp #todo
 
 		//function 函数名是指向函数对象的指针 函数没有重载的概念
 
-		console.log(sum(10,100));
-        function sum(num1,num2){
-        	return num1+num2;
+		console.log(sum(10,100));//解析器读取并将函数声明添加到执行环境
+		function sum(num1,num2){
+			return num1+num2;
+		}
+        // console.log(sum(10,100));//函数在初始化语句中 不是一个函数声明 放在前面会找不到这个方法
+        // var sum=function(num1,num2){
+        // 	return num1+num2;
+        // }
+
+        //函数内部属性
+        function factorial(num){//阶乘
+        	if(num<=1){
+        		return 1;
+        	}else{
+        		return num*arguments.callee(num-1) //arguments.callee指针 指向arguments对象函数
+        	}
         }
-   
+        console.log(factorial(5));
+
+        function setName(name,age){
+        	return name;
+        }
+		console.log(setName.length) ;  //函数希望接受的命名参数的个数
+
+		window.colors="red";
+		var o = {"colors":"green"};
+		function getColor(){
+			console.log(this.colors);//全局的this 就是 window
+		}
+		getColor();//red
+		var getColor1=getColor.bind(o);//绑定this给函数
+		getColor1();//green
+		
+  		//基本包装类型 1：Boolean类型 不建议使用 2:number类型 var num=new Bumber(10);不建议直接实例化3:string var str=new String("hello")
+  		var num =10;//number类型重写了toString valueOf方法
+  		console.log(num.toString(2));//转换成2进制
+  		console.log(num.toFixed(2));//显示俩位小数
+
+  		var str="hello world";
+  		console.log(str.charAt(1));//e 返回指定位置的值
+  		console.log(str.charCodeAt(1));//101 返回指定位置的值的字符编码
+  		console.log(str[1]);
+
+  		//截取字符串slice() substr() substring() 如str.slice(1,2)第一个参数起始位置 第二个参数到哪里结束
+
+  		//str.trim() 去前置后置空格
+
+  		//str.toUpperCase();str.toLowerCase();
+
+  		var text="cddat,bat";
+  		var patterm=/.at/;
+  		var match=text.match(patterm);//保存和模式匹配的字符串
+  		console.log(match);
+
+  		var pos=text.search(/at/);//返回在at字符串中第一次出现的位置
+  		console.log(pos);
+
+  		var result=text.replace("at","@at");//如果第一个是字符串 只会替换第一个
+  		var result1=text.replace(/at/g,"@at");///g 正则全局标志
+  		console.log(result);
+  		console.log(result1);
+
+  		var numText="1,2,3,4";//根据分格符放到数组中
+
+  		var numArr=numText.split(",");
+  		console.log(numArr);
 
 
+  		//url encode
+  		var url="https://www.baidu.com/ 123";
+  		console.log(encodeURI(url));//只会把空格转换成%20; 对应decodeURI
+  		console.log(encodeURIComponent(url));//非字符都会编码;对应decodeURIComponent
+
+  		//eval() 执行其中的代码
+  		// eval("alert(123)");
+
+  		//window 全局声明的变量和函数 都成了window对象的属性 浏览器实现的
 
 
+  		//Math
+  		var max=Math.max(1,2,3,4,5,99);
+  		console.log(max);
+  		Math.ceil(25.9);//向上舍入
+  		Math.floor(25.9);//向下舍入
+  		Math.round(25.9);//四舍五入
 
-	</script>
+  		var rand=Math.random();
+  		console.log(rand);//0-1的随机数
+  		var randNum=Math.floor(Math.random()*10+1);//1-10的随机数
+  		console.log(randNum);
+
+
+//对象在JS里称为引用类型 和传统语言的类相似 但实现不同 需要new的对象 object array Date RegExp Boolean Number String 作用域内置了俩个对象 Global和Math
+
+</script>
 </body>
 </html>
