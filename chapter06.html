@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>chapter03</title>
+</head>
+<body>
+
+	<script>
+		window.onload=function() {
+              var person={
+              	name:"js",
+              	age:"15",
+              	sayName:function(){
+              		console.log(this.name);
+              	}
+              }
+
+              person.sayName();
+
+              //创建对象 工厂模式 缺点 对象识别的问题 怎么知道一个对象的类型
+              function createFactory(name,age,job){
+              	var o=new Object();
+              	o.name=name;
+              	o.age=age;
+              	o.job=job;
+              	o.sayName=function(){
+              		console.log(this.name);
+              	}
+              	return o;
+              }
+              var p1=createFactory("p1",20,"apple");
+              var p2=createFactory("p2",21,"qq");
+              console.log("p1="+p1.name);
+              console.log("p2="+p2.name);
+
+
+              //构造函数模式 方法名大写 当使用 new 才是构造函数 不使用new 就是普通函数 缺点每个方法要在实例上重新创建一遍
+              function PersonConstructor(name,age,job){
+                   this.name=name;
+                   this.age=age;
+                   this.job=job;
+                   this.sayName=function(){
+                   	console.log(name);
+                   }
+              }
+              var p_constructor1=new PersonConstructor("constructor1",12,"buer");
+              var p_constructor2=new PersonConstructor("constructor2",13,"google");
+              console.log("constructor"+p_constructor1.name);
+              console.log(p_constructor1 instanceof PersonConstructor);//检测对象类型
+
+              //普通函数调用
+              PersonConstructor("fun",11,"mico");
+              window.sayName();
+
+		}
+	</script>
+</body>
+</html>
