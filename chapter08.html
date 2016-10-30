@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>chapter08</title>
+</head>
+<body>
+	<h1>window对象</h1>
+	<p>
+		js是单线程语言  单线程解释器 一定时间只能执行一段代码 为了控制要执行的代码 有了一个js任务队列
+		如果队列是空话会立刻执行
+		如果队列不是空的 就要等恰年的代码执行完再执行
+	</p>
+</span>
+<script>
+	window.onload=function() {
+		window.open("https://segmentfault.com/n/1330000007254331?token=31de52eb3d68433c007dfadfb99fdc23");
+			var tid=setTimeout(function(){console.log(1)},1000);//超时调用
+			clearTimeout(tid);
+			var iid=setInterval(function(){console.log(2)},1000);//间歇调用
+			clearInterval(iid);
+			if(confirm("yes?")){
+				console.log("yes");
+			}else{
+				console.log("no");
+			}
+			var p=prompt("write");
+			if(p!=false){
+				console.log(p);
+			}else{
+				console.log(null);
+			}
+			//window.print();
+			window.find();
+
+			console.log(window.location);
+		var args=getQueryStringArgs();
+		console.log(args);
+		//location.href="file:///D:/proJavaScript/chapter08.html?a=123&b=ddd";
+		location.hash="#aaa";
+		location.search="?dd=22&aa=33";
+		location.replace("");
+		location.reload();
+		location.reload(true);
+		screen.width;
+		screen.height;
+		history.go(-1);
+		function getQueryStringArgs(){
+			var qs=(location.search.length>0?location.search.substring(1):""),
+			args={},
+			items=qs.length?qs.split("&"):[],
+			item,
+			name=null,
+			value=null,
+			i=0,
+			len=items.length;
+			for(i=0;i<len;i++){
+				item=items[i].split("=");
+				name=decodeURIComponent(item[0]);
+				value=decodeURIComponent(item[1]);
+				if(name.length)	{
+					args[name]=value;
+				}				
+			}
+				return args;
+		}
+	}
+</script>
+</body>
+</html>
