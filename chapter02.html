@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>chapter01</title>
+</head>
+<body>
+
+	<script>
+		window.onload=function() {
+			//变量包含俩种不同数据类型的值 1.基本类型值 简单的数据段，复制是复制值；2.应用类型值，有多个值构成的对象，复制时复制指针
+			function setName(obj) {
+				obj.name="Bella";//传递的是指针地址
+			}
+			var person= new Object();
+			setName(person);
+			console.log(person.name);
+			var o=new Object();
+			console.log(typeof(o));
+			var arr= new Array();
+			console.log(typeof(arr));
+			console.log(arr instanceof Array); //instanceof 语法
+
+			function add(num1,num2) {
+				sum=num1+num2;//没有写var 该变量添加到了全局环境
+				return sum;
+			}
+			var r=add(1,1);
+			console.log(sum);
+		}
+	</script>
+</body>
+</html>
